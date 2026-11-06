@@ -1,0 +1,16 @@
+{
+    "name": "Sigma",
+    "short_name": "Sigma",
+    "description": "Sistema de Inscripción y Gestión de Materias",
+    "start_url": "/public/index.php",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3f51b5",
+    "icons": [
+        {
+            "src": "/public/logo.svg",
+            "type": "image/svg+xml",
+            "sizes": "any"
+        }
+    ]
+}
