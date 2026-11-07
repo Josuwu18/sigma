@@ -1,7 +1,21 @@
 #!/bin/bash
 
-# Asegurar permisos
+# Si no existe .env, crearlo a partir de .env.example
+if [ ! -f /var/www/html/.env ]; then
+    echo "Inicializando archivo .env..."
+    cp /var/www/html/.env.example /var/www/html/.env
+fi
+
+# Generar APP_KEY si no está configurada
+if [ -z "$APP_KEY" ]; then
+    echo "Generando APP_KEY..."
+    php artisan key:generate --force --no-interaction
+fi
+
+# Asegurar permisos en storage y bootstrap/cache
+mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs
 chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
 
 # Ejecutar migraciones si la base de datos está disponible
 echo "Ejecutando migraciones de Laravel..."
@@ -12,7 +26,7 @@ php artisan config:cache || true
 php artisan route:cache || true
 php artisan view:cache || true
 
-# Ejecutar el comando principal de Apache
+# Ejecutar Apache
 if [ "$#" -eq 0 ]; then
     exec apache2-foreground
 else
