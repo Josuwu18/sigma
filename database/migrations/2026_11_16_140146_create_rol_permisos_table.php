@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_rol')->constrained('rols')->onDelete('cascade');
             $table->foreignId('id_permiso')->constrained('permisos')->onDelete('cascade');
-            $table->string('descripcion');
-            $table->boolean('estado')->default(true); 
+            $table->foreignId('id_modulo')->constrained('modulos')->onDelete('cascade');
+            $table->boolean('estatus')->default(true);  
             $table->timestamps();
         });
     }

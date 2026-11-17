@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombres');
-            $table->string('apellidos');
+            $table->string('nombres', 100);
+            $table->string('apellidos', 100);
             $table->string('cedula', 30)->unique();
-            $table->string('genero', 20);
+            $table->enum('genero', ['Masculino', 'Femenino']);
             $table->date('fecha_Nacimiento');
-            $table->string('ciudad', 100);
+            $table->string('estado', 100);
             $table->string('municipio', 100);
-            $table->string('telefono', 30)->nullable();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->boolean('estado')->default(true);
+            $table->string('parroquia', 100);
+            $table->string('telefono', 30);
+            $table->string('correo', 100)->unique();
+            $table->string('clave');
+            $table->boolean('estatus')->default(true);
             $table->timestamps();
         });
     }

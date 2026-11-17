@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('tipo_materia', function (Blueprint $table) {
             $table->id();
-           $table->string('nombre')->unique();
-            $table->text('descripcion')->nullable();
-            $table->boolean('estado')->default(true);
+            $table->enum('nombre', ['Teórica', 'Práctica', 'Laboratorio']);
+            $table->boolean('estatus')->default(true);
             $table->timestamps();
         });
     }

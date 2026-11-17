@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
-             $table->string('codigo')->unique();
+            $table->string('codigo')->unique();
             $table->string('nombre');
             $table->integer('unidades_creditos');
             $table->foreignId('id_tipo_materia')->constrained('tipo_materia')->onDelete('cascade');
-            $table->boolean('estado')->default(true);
+            $table->boolean('estatus')->default(true);  
             $table->timestamps();
         });
     }

@@ -16,9 +16,8 @@ return new class extends Migration
             $table->foreignId('id_carrera')->constrained('carreras')->onDelete('cascade');
             $table->foreignId('id_semestre')->constrained('semestres')->onDelete('restrict');
             $table->foreignId('id_materia')->constrained('materias')->onDelete('restrict');
-            $table->unsignedTinyInteger('unidades_credito'); 
-            $table->unique(['id_carrera', 'id_materia'], 'pensum_carrera_materia_unique');
-            $table->boolean('activo')->default(true);  
+            $table->unsignedTinyInteger('unidades_credito');
+            $table->boolean('estatus')->default(true);  
             $table->timestamps();
         });
     }

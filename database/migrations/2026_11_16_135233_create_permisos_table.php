@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('permisos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('descripcion');
-            $table->boolean('estado')->default(true);
+            $table->boolean('estatus')->default(true);  
             $table->timestamps();
         });
     }

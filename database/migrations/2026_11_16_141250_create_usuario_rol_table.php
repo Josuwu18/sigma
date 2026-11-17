@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_usuarios')->constrained('usuarios')->onDelete('cascade');
             $table->foreignId('id_rol')->constrained('rols')->onDelete('cascade');
-            $table->boolean('estados')->default(true);
+            $table->boolean('estatus')->default(true);  
             $table->timestamps();
         });
     }

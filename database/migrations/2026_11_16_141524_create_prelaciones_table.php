@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_carrera')->constrained('carreras')->onDelete('cascade');
             $table->foreignId('id_materia_prelada')->constrained('materias')->onDelete('cascade');
-            $table->foreignId('id_materia_prelante')->constrained('materias')->onDelete('cascade');
-            $table->integer('C_A_totales')->default(0);
-            $table->unique(['id_carrera', 'id_materia_prelada', 'id_materia_prelante'], 'prelacion_unica');
+            $table->foreignId('id_materia_preladora')->constrained('materias')->onDelete('cascade');
+            $table->boolean('estatus')->default(true);
             $table->timestamps();
         });
     }

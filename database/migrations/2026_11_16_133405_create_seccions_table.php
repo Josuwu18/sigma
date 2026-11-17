@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('seccions', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->boolean('estado');
+            $table->boolean('estatus')->default(true);  
             $table->timestamps();
         });
     }
