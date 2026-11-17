@@ -7,22 +7,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./sigma-app
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install
-      - run: npx cap sync android
+
+      - name: Instalar dependencias y sincronizar Capacitor
+        working-directory: ./sigma-app
+        run: |
+          npm install
+          npx cap sync android
+
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
-      - run: chmod +x android/gradlew
-      - run: ./android/gradlew assembleDebug
+
+      - name: Compilar APK Debug
+        working-directory: ./sigma-app/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
       - uses: actions/upload-artifact@v4
         with:
           name: sigma-app-debug
