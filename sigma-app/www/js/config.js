@@ -1,1 +1,1 @@
-const API_BASE = "http://192.168.1.105:8000/api";
+const API_BASE = "http://192.168.11.14:8000/api";
