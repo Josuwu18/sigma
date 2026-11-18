@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\PensumController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -18,3 +19,6 @@ Route::get('/prueba', function () {
         ]
     ]);
 });
+
+Route::get('/carreras', [PensumController::class, 'carreras']);
+Route::get('/carreras/{id}/pensum', [PensumController::class, 'pensumPorCarrera']);

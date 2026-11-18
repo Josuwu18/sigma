@@ -1,0 +1,25 @@
+body {
+  background-color: #f4f6f9;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.navbar-brand {
+  letter-spacing: 0.5px;
+}
+
+.card-semestre {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #495057;
+}
+
+.badge-prelacion {
+  font-weight: 500;
+  font-size: 0.78rem;
+}
