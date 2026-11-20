@@ -21,6 +21,11 @@ chmod -R 775 storage bootstrap/cache
 echo "Ejecutando migraciones de Laravel..."
 php artisan migrate --force --no-interaction || echo "Aviso: No se pudieron ejecutar las migraciones en este momento."
 
+
+# Ejecutar seeders (PensumSeeder y datos iniciales)
+echo "Ejecutando seeders de Laravel..."
+php artisan db:seed --force --no-interaction || echo "Aviso: No se pudieron ejecutar los seeders en este momento."
+
 # Optimizar caché para producción
 php artisan config:cache || true
 php artisan route:cache || true
