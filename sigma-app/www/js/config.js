@@ -1,0 +1,1 @@
+const API_BASE = "https://sigma-5a9g.onrender.com/api";

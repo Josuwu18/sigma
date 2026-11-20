@@ -1,0 +1,9 @@
+{
+  "appId": "com.sigma.app",
+  "appName": "SIGMA",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  }
+}
