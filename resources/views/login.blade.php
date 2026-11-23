@@ -49,13 +49,16 @@
             <h1 class="panel__title">Bienvenido</h1>
             <p class="panel__sub">Ingresa al Sistema Universitario con tu cuenta</p>
 
-            <form class="form" id="login" action="login.php" method="POST" novalidate>
-                <p class="alert" id="alert" role="alert" hidden></p>
+            <form class="form" id="login" action="{{ route('login.store') }}" method="POST">
+                @csrf
+                @if ($errors->any())
+                    <p class="alert" role="alert">{{ $errors->first() }}</p>
+                @endif
 
                 <label class="field">
-                    <span class="sr-only">Usuario o Documento</span>
-                    <input type="text" name="user" id="user" placeholder="Usuario o Documento"
-                        autocomplete="username" required>
+                    <span class="sr-only">Correo electrónico</span>
+                    <input type="email" name="email" id="email" value="{{ old('email') }}"
+                        placeholder="Correo electrónico" autocomplete="username" required>
                 </label>
 
                 <label class="field">

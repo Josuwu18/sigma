@@ -19,10 +19,12 @@ return [
     */
 
     'manifest' => [
+        'id' => 'sigma',
         'name' => 'SIGMA',
         'short_name' => 'SIGMA',
         'background_color' => '#ffffff',
         'display' => 'fullscreen',
+        'orientation' => 'portrait',
         'description' => 'Sistema de Inscripción, Gestión de Materias y Asistencia',
         'theme_color' => '#ffffff',
         'icons' => [
@@ -32,7 +34,25 @@ return [
                 'type' => 'image/svg+xml',
                 'purpose' => 'any'
             ],
+            [
+                'src' => 'logo(192x192).png',
+                'sizes' => '192x192',
+                'type' => 'image/png'
+            ],
+            [
+                'src' => 'logo(512x512).png',
+                'sizes' => '512x512',
+                'type' => 'image/png'
+            ],
         ],
+        'screenshots' => [
+            [
+                'src' => 'screenshot.png',
+                'sizes' => '1280x720',
+                'type' => 'image/png',
+                'platform' => 'wide',
+            ]
+        ]
     ],
 
     /*
