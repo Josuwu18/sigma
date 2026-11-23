@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql pdo_pgsql gd
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql gd
 
 RUN a2enmod rewrite
 RUN sed -ri -e 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf

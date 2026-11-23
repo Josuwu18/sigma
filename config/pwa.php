@@ -19,17 +19,18 @@ return [
     */
 
     'manifest' => [
-        'name' => 'Laravel PWA',
-        'short_name' => 'LPT',
-        'background_color' => '#6777ef',
+        'name' => 'SIGMA',
+        'short_name' => 'SIGMA',
+        'background_color' => '#ffffff',
         'display' => 'fullscreen',
-        'description' => 'A Progressive Web Application setup for Laravel projects.',
-        'theme_color' => '#6777ef',
+        'description' => 'Sistema de Inscripción, Gestión de Materias y Asistencia',
+        'theme_color' => '#ffffff',
         'icons' => [
             [
-                'src' => 'logo.png',
-                'sizes' => '512x512',
-                'type' => 'image/png',
+                'src' => 'logo.svg',
+                'sizes' => 'any',
+                'type' => 'image/svg+xml',
+                'purpose' => 'any'
             ],
         ],
     ],
