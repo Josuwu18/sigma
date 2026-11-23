@@ -27,6 +27,7 @@ return [
         'orientation' => 'portrait',
         'description' => 'Sistema de Inscripción, Gestión de Materias y Asistencia',
         'theme_color' => '#ffffff',
+        'dir' => 'ltr',
         'icons' => [
             [
                 'src' => 'logo.svg',
