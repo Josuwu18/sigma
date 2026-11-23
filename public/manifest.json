@@ -1,0 +1,17 @@
+{
+    "name": "SIGMA",
+    "short_name": "SIGMA",
+    "start_url": "/",
+    "background_color": "#000000",
+    "description": "Sistema de Inscripción, Gestión de Materias y Asistencia",
+    "display": "fullscreen",
+    "theme_color": "#000000",
+    "icons": [
+        {
+            "src": "logo.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ]
+}
