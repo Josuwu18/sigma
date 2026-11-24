@@ -28,6 +28,7 @@ return [
         'description' => 'Sistema de Inscripción, Gestión de Materias y Asistencia',
         'theme_color' => '#ffffff',
         'dir' => 'ltr',
+        'start_url' => 'https://sigma-aycf.onrender.com/',
         'icons' => [
             [
                 'src' => 'logo.svg',
