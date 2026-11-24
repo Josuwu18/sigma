@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_carrera
  * @property int $id_semestre
  * @property int $id_materia
- * @property int $unidades_credito
  * @property bool $estatus
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -35,7 +34,6 @@ class Pensum extends Model
 		'id_carrera' => 'int',
 		'id_semestre' => 'int',
 		'id_materia' => 'int',
-		'unidades_credito' => 'int',
 		'estatus' => 'bool'
 	];
 
@@ -43,7 +41,6 @@ class Pensum extends Model
 		'id_carrera',
 		'id_semestre',
 		'id_materia',
-		'unidades_credito',
 		'estatus'
 	];
 

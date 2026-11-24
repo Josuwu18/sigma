@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('apellidos', 100);
             $table->string('cedula', 30)->unique();
             $table->enum('genero', ['Masculino', 'Femenino']);
-            $table->date('fecha_Nacimiento');
+            $table->date('fecha_nacimiento');
             $table->string('estado', 100);
             $table->string('municipio', 100);
             $table->string('parroquia', 100);

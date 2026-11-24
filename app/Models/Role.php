@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Rol
+ * Class Role
  * 
  * @property int $id
  * @property string $nombre
@@ -20,14 +20,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Collection|Permiso[] $permisos
- * @property Collection|Usuario[] $usuarios
+ * @property Collection|RolPermiso[] $rol_permisos
+ * @property Collection|UsuarioRol[] $usuario_rols
  *
  * @package App\Models
  */
-class Rol extends Model
+class Role extends Model
 {
-	protected $table = 'rols';
+	protected $table = 'roles';
 
 	protected $casts = [
 		'estatus' => 'bool'
@@ -39,17 +39,13 @@ class Rol extends Model
 		'estatus'
 	];
 
-	public function permisos()
+	public function rol_permisos()
 	{
-		return $this->belongsToMany(Permiso::class, 'rol_permisos', 'id_rol', 'id_permiso')
-					->withPivot('id', 'id_modulo', 'estatus')
-					->withTimestamps();
+		return $this->hasMany(RolPermiso::class, 'id_rol');
 	}
 
-	public function usuarios()
+	public function usuario_rols()
 	{
-		return $this->belongsToMany(Usuario::class, 'usuario_rol', 'id_rol', 'id_usuarios')
-					->withPivot('id', 'estatus')
-					->withTimestamps();
+		return $this->hasMany(UsuarioRol::class, 'id_rol');
 	}
 }

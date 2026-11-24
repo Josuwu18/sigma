@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property Modulo $modulo
  * @property Permiso $permiso
- * @property Rol $rol
+ * @property Role $role
  *
  * @package App\Models
  */
@@ -54,8 +54,8 @@ class RolPermiso extends Model
 		return $this->belongsTo(Permiso::class, 'id_permiso');
 	}
 
-	public function rol()
+	public function role()
 	{
-		return $this->belongsTo(Rol::class, 'id_rol');
+		return $this->belongsTo(Role::class, 'id_rol');
 	}
 }

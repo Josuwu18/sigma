@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Collection|Rol[] $rols
+ * @property Collection|RolPermiso[] $rol_permisos
  *
  * @package App\Models
  */
@@ -36,10 +36,8 @@ class Permiso extends Model
 		'estatus'
 	];
 
-	public function rols()
+	public function rol_permisos()
 	{
-		return $this->belongsToMany(Rol::class, 'rol_permisos', 'id_permiso', 'id_rol')
-					->withPivot('id', 'id_modulo', 'estatus')
-					->withTimestamps();
+		return $this->hasMany(RolPermiso::class, 'id_permiso');
 	}
 }

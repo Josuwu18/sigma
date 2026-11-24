@@ -377,16 +377,14 @@ class PensumSeeder extends Seeder
                 $idSemestre = $semestreIds[$numSem];
                 foreach ($codigosMaterias as $codMat) {
                     $idMateria = $materiaIds[$codMat];
-                    $uc = $materias[$codMat][1];
 
                     DB::table('pensums')->updateOrInsert(
                         [
                             'id_carrera' => $idCarrera,
-                            'id_semestre' => $idSemestre,
                             'id_materia' => $idMateria,
                         ],
                         [
-                            'unidades_credito' => $uc,
+                            'id_semestre' => $idSemestre,
                             'estatus' => 1,
                             'created_at' => $now,
                             'updated_at' => $now,

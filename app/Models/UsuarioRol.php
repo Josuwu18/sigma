@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Rol $rol
+ * @property Role $role
  * @property Usuario $usuario
  *
  * @package App\Models
@@ -40,9 +40,9 @@ class UsuarioRol extends Model
 		'estatus'
 	];
 
-	public function rol()
+	public function role()
 	{
-		return $this->belongsTo(Rol::class, 'id_rol');
+		return $this->belongsTo(Role::class, 'id_rol');
 	}
 
 	public function usuario()

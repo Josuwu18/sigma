@@ -6,24 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('prelaciones', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_carrera')->constrained('carreras')->onDelete('cascade');
-            $table->foreignId('id_materia_prelada')->constrained('materias')->onDelete('cascade');
-            $table->foreignId('id_materia_preladora')->constrained('materias')->onDelete('cascade');
+            $table->foreignId('id_carrera')->constrained('carreras')->cascadeOnDelete();
+            $table->foreignId('id_materia_prelada')->constrained('materias')->cascadeOnDelete();
+            $table->foreignId('id_materia_preladora')->constrained('materias')->cascadeOnDelete();
             $table->boolean('estatus')->default(true);
             $table->timestamps();
+
+            $table->unique(['id_carrera', 'id_materia_prelada', 'id_materia_preladora'], 'prelaciones_unicas_idx');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('prelaciones');

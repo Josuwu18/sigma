@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $apellidos
  * @property string $cedula
  * @property string $genero
- * @property Carbon $fecha_Nacimiento
+ * @property Carbon $fecha_nacimiento
  * @property string $estado
  * @property string $municipio
  * @property string $parroquia
@@ -29,7 +29,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Collection|Rol[] $rols
+ * @property Collection|Asistencia[] $asistencias
+ * @property Collection|Inscripcione[] $inscripciones
+ * @property Collection|ProfesorSeccion[] $profesor_seccions
+ * @property Collection|UsuarioRol[] $usuario_rols
  *
  * @package App\Models
  */
@@ -38,7 +41,7 @@ class Usuario extends Model
 	protected $table = 'usuarios';
 
 	protected $casts = [
-		'fecha_Nacimiento' => 'datetime',
+		'fecha_nacimiento' => 'datetime',
 		'estatus' => 'bool'
 	];
 
@@ -47,7 +50,7 @@ class Usuario extends Model
 		'apellidos',
 		'cedula',
 		'genero',
-		'fecha_Nacimiento',
+		'fecha_nacimiento',
 		'estado',
 		'municipio',
 		'parroquia',
@@ -57,10 +60,23 @@ class Usuario extends Model
 		'estatus'
 	];
 
-	public function rols()
+	public function asistencias()
 	{
-		return $this->belongsToMany(Rol::class, 'usuario_rol', 'id_usuarios', 'id_rol')
-					->withPivot('id', 'estatus')
-					->withTimestamps();
+		return $this->hasMany(Asistencia::class, 'id_usuario');
+	}
+
+	public function inscripciones()
+	{
+		return $this->hasMany(Inscripcione::class, 'id_usuario');
+	}
+
+	public function profesor_seccions()
+	{
+		return $this->hasMany(ProfesorSeccion::class, 'id_usuario');
+	}
+
+	public function usuario_rols()
+	{
+		return $this->hasMany(UsuarioRol::class, 'id_usuarios');
 	}
 }

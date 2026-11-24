@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property TipoMaterium $tipo_materium
  * @property Collection|Pensum[] $pensums
  * @property Collection|Prelacione[] $prelaciones
+ * @property Collection|ProfesorSeccion[] $profesor_seccions
  *
  * @package App\Models
  */
@@ -59,5 +60,10 @@ class Materia extends Model
 	public function prelaciones()
 	{
 		return $this->hasMany(Prelacione::class, 'id_materia_preladora');
+	}
+
+	public function profesor_seccions()
+	{
+		return $this->hasMany(ProfesorSeccion::class, 'id_materia');
 	}
 }

@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
+ * @property Collection|Inscripcione[] $inscripciones
  * @property Collection|Pensum[] $pensums
  *
  * @package App\Models
@@ -35,6 +36,11 @@ class Semestre extends Model
 		'nombre',
 		'estatus'
 	];
+
+	public function inscripciones()
+	{
+		return $this->hasMany(Inscripcione::class, 'id_semestre');
+	}
 
 	public function pensums()
 	{
