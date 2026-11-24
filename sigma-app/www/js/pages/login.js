@@ -17,15 +17,16 @@ function ocultarError() {
     alerta.hidden = true;
 }
 
-// 2. Funcionalidad del botón del ojito
+// 2. Funcionalidad del boton del ojito
 btnToggle.addEventListener("click", () => {
     const esPassword = inputPassword.type === "password";
     inputPassword.type = esPassword ? "text" : "password";
     btnToggle.setAttribute("aria-pressed", String(esPassword));
 });
 
-// 3. Qué pasa cuando el usuario presiona "Iniciar sesión"
+// 3. Accion del Formulario.
 formLogin.addEventListener("submit", async (evento) => {
+
     // Evita que la página se recargue sola (comportamiento por defecto de los <form>)
     evento.preventDefault();
     ocultarError();
@@ -34,7 +35,7 @@ formLogin.addEventListener("submit", async (evento) => {
     const usuario = inputUser.value.trim();
     const password = inputPassword.value;
 
-    // Validación básica antes de molestar al servidor
+    // Validación basica antes de molestar al servidor
     if (!usuario || !password) {
         mostrarError("Por favor, ingresa tu usuario/documento y contraseña.");
         return;
@@ -46,7 +47,6 @@ formLogin.addEventListener("submit", async (evento) => {
 
     try {
         // 4. Enviamos los datos a tu ruta POST de Laravel
-        // OJO: Verifica que los nombres ("user" y "password") coincidan con lo que espera tu AuthController en Laravel
         const respuesta = await apiRequest("/login", {
             method: "POST",
             body: JSON.stringify({

@@ -9,6 +9,9 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Override;
 
 /**
  * Class User
@@ -26,24 +29,43 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
-	use HasFactory;
+	use HasFactory, HasApiTokens, Notifiable;
 
-	protected $table = 'users';
+	protected $table = 'usuarios';
 
 	protected $casts = [
-		'email_verified_at' => 'datetime'
+		'estatus' => 'boolean'
 	];
 
 	protected $hidden = [
-		'password',
-		'remember_token'
+		'clave',
 	];
 
 	protected $fillable = [
-		'name',
-		'email',
-		'email_verified_at',
-		'password',
-		'remember_token'
+		'nombres',
+		'apellidos',
+		'cedula',
+		'genero',
+		'fecha_Nacimiento',
+		'estado',
+		'municipio',
+		'parroquia',
+		'telefono',
+		'correo',
+		'clave',
+		'estatus'
 	];
+
+	#[Override]
+	public function getAuthPassword()
+	{
+		return $this->clave;
+	}
+
+	public function rols()
+	{
+		return $this->belongsToMany(Rol::class, 'usuario_rol', 'id_usuarios', 'id_rol')
+			->withPivot('id', 'estatus')
+			->withTimestamps();
+	}
 }
