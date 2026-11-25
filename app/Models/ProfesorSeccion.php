@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Usuario $usuario
  * @property Collection|Clase[] $clases
  * @property Collection|Horario[] $horarios
+ * @property Collection|InscripcionMateria[] $inscripcion_materias
  *
  * @package App\Models
  */
@@ -88,5 +89,10 @@ class ProfesorSeccion extends Model
 	public function horarios()
 	{
 		return $this->hasMany(Horario::class, 'id_profesor_seccion');
+	}
+
+	public function inscripcion_materias()
+	{
+		return $this->hasMany(InscripcionMateria::class, 'id_profesor_seccion');
 	}
 }

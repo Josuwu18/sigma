@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Seccione $seccione
  * @property Semestre $semestre
  * @property Usuario $usuario
+ * @property Collection|InscripcionMateria[] $inscripcion_materias
  *
  * @package App\Models
  */
@@ -75,5 +77,10 @@ class Inscripcione extends Model
 	public function usuario()
 	{
 		return $this->belongsTo(Usuario::class, 'id_usuario');
+	}
+
+	public function inscripcion_materias()
+	{
+		return $this->hasMany(InscripcionMateria::class, 'id_inscripcion');
 	}
 }
